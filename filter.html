@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1"/>
+		<link rel="stylesheet" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css"/>
+		<script src="jquery-2.0.3.min.js"></script>
+		<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<script src="pcr.js"></script>
+	</head>
+	<body>
+		<div id="filterpage" data-role="dialog" data-theme="c" data-close-btn="none">
+			<div data-role="header" data-theme="c">
+				<h1>Filter</h1>
+			</div>
+			<div data-role="content">
+				<div data-role="fieldcontain">
+					<fieldset data-role="controlgroup">
+						<legend>Select the classes to include:</legend>
+							<input type="checkbox" id="AP European History"/>
+							<label for="AP European History">AP European History</label>
+							<input type="checkbox" id="ATCS Programming Languages"/>
+							<label for="ATCS Programming Languages">ATCS Programming Languages</label>
+							<input type="checkbox" id="Honors Chemistry"/>
+							<label for="Honors Chemistry">Honors Chemistry</label>
+							<input type="checkbox" id="Honors English 2: British Literature"/>
+							<label for="Honors English 2: British Literature">Honors English 2: British Literature</label>
+							<input type="checkbox" id="Honors Precalculus"/>
+							<label for="Honors Precalculus">Honors Precalculus</label>
+							<input type="checkbox" id="Japanese 2"/>
+							<label for="Japanese 2">Japanese 2</label>
+					</fieldset>
+				</div>
+				<a href="homework.html" data-role="button" data-rel="back">Okay</a>
+			</div>
+			<script>
+				var selFilters = selFilters || {
+					'AP European History': true,
+					'ATCS Programming Languages': true,
+					'Honors Chemistry': true,
+					'Honors English 2: British Literature': true,
+					'Honors Precalculus': true,
+					'Japanese 2': true
+				};
+				
+				var homework_backup = homework_backup || $('ul#homework').clone(true);
+				
+				$('#filterpage').on('pagebeforehide', function() {
+					for(var key in selFilters) {
+						selFilters[key] = $('input[id="' + key + '"]').prop('checked');
+					}
+					var filtering = false;
+					$('ul#homework li').map(function(index, jElem) {
+						var elem = $(jElem);
+						if(elem.attr('data-role') === 'list-divider') {
+							filtering = !selFilters[elem.text()];
+						}
+						if(filtering) {
+							elem.remove();
+						}
+					});
+				});
+
+				$('#filterpage').on('pageshow', function() {
+					$('ul#homework').replaceWith(homework_backup.clone(true));
+				});
+				
+				for(var key in selFilters) {
+					$('input[id="' + key + '"]').prop('checked', selFilters[key]);
+				}
+			</script>
+		</div>
+	</body>
+</html>

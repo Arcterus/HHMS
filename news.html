@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1"/>
+		<link rel="stylesheet" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css"/>
+		<link rel="stylesheet" href="pickadate.js-3.2.1/lib/themes/default.css"/>
+		<link rel="stylesheet" href="pickadate.js-3.2.1/lib/themes/default.date.css"/>
+		<script src="jquery-2.0.3.min.js"></script>
+		<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<script src="pickadate.js-3.2.1/lib/compressed/picker.js"></script>
+		<script src="pickadate.js-3.2.1/lib/compressed/picker.date.js"></script>
+		<script src="pcr.js"></script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="c" data-dom-cache="true">
+			<div data-role="header" data-theme="c">
+				<h1>News</h1>
+				<a href="date.html" data-rel="dialog" class="ui-btn-right">Date</a>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="news.html" class="ui-btn-active ui-state-persist">News</a></li>
+						<li><a href="homework.html">Homework</a></li>
+						<li><a href="schedule.html">Schedule</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="content">
+				<ul id="news" data-role="listview">
+					<li>LIFE assembly on Thursday!</li>
+					<li>Cool mobile UI for the homework system coming out soon!</li>
+					<li>Yay!  If there are dates in the actual UI, maybe there should be list-dividers that split news according to dates?</li>
+				</ul>
+			</div>
+			<div data-role="footer" data-theme="c" data-position="fixed">
+				<h1>Copyright (C) 2013 Arcterus</h1>
+			</div>
+		</div>
+	</body>
+</html>
